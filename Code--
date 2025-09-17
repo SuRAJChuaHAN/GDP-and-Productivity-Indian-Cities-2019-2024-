@@ -16,32 +16,76 @@ plt.xlabel('Column')
 plt.ylabel('Values')
 plt.show()
 
+
+#Total of each city all over year R&D Expenditure 2019-2024
 rd_expenditure = df.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 plt.figure(figsize=(12,6))
 plt.bar(rd_expenditure['City'],rd_expenditure['R&D Expenditure (% of GDP)'],color='skyblue',edgecolor='black')
-plt.title('Total of each city all over year R&D Expenditure')
+plt.title(' R&D Expenditure (% of GDP) 2019-2024')
 plt.xlabel('City')
 plt.ylabel('R&D Expenditure (% of GDP)')
 plt.xticks(rotation=45)
 plt.show()
 
+# Patenets per 100,000 Inhabitants 2019-2024
 patents = df.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
-print(patents)
+plt.figure(figsize=(12,6))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',data=patents,color='lightgreen',edgecolor='black')
+plt.title('Patenets per 100,000 Inhabitants 2019-2024')
+plt.xlabel('City')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
 
+# Unemployment Rate (%) 2019 - 2024
 unemployment_rate = df.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
-print(unemployment_rate)
+plt.figure(figsize=(12,6))
+sns.barplot(x='City', y='Unemployment Rate (%)', edgecolor='black',data=unemployment_rate)
+plt.title('Unemployment Rate (%) 2019 - 2024')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
+# Youth Unemployment Rate (%) 2019-2024
 youth_unemployed_rate = df.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
-print(youth_unemployed_rate)
+plt.figure(figsize=(12,6))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',edgecolor='black',data=youth_unemployed_rate)
+plt.title('Youth Unemployment Rate (%) 2019-2024')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
+#SME Employment (%) 2019-2024
 sme_employment = df.groupby('City')['SME Employment (%)'].sum().reset_index()
-print(sme_employment)
+plt.figure(figsize=(12,6))
+sns.barplot(x='City',y='SME Employment (%)',edgecolor='black',data=sme_employment)
+plt.title('SME Employment (%) 2019-2024')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
+#Tourism Sector Employment (%) 2019-2024
 tourism_sector_employment = df.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
-print(tourism_sector_employment)
+plt.figure(figsize=(12,6))
+plt.bar(tourism_sector_employment['City'],tourism_sector_employment['Tourism Sector Employment (%)'],edgecolor='black')
+plt.title('Tourism Sector Employment (%) 2019-2024')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
+# ICT Sector Employment (%) 2019-2024
 itc_sector_employment = df.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
-print(itc_sector_employment)
+plt.figure(figsize=(12,6))
+sns.barplot(x='City',y='ICT Sector Employment (%)',edgecolor='black',data=itc_sector_employment)
+plt.title('ICT Sector Employment (%) 2019-2024')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 year_2019 = df[df['Year']==2019]
 year_2020 = df[df['Year']==2020]
@@ -105,10 +149,15 @@ plt.show()
 
 rd_expenditure_2021 = year_2021.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 plt.figure(figsize=(12,6))
-sns.heatmap(df, annot=True, cmap = 'coolwarm', linewidths=0.5)
-plt.title('2021 City and R&D Expenditure (% of GDP),fontsize=16')
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)', color = 'black', data = rd_expenditure_2021)
+plt.title('2021 City and R&D Expenditure (% of GDP)')
+plt.xlabel('City')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks(rotation=45)
 plt.show()
 rd_expenditure_2022 = year_2022.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+plt.figure(figsize=(12,6))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)')
 rd_expenditure_2023 = year_2023.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 rd_expenditure_2024 = year_2024.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 
