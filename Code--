@@ -19,6 +19,9 @@ plt.show()
 
 #Total of each city all over year R&D Expenditure 2019-2024
 rd_expenditure = df.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP) (2019-2024):\n',rd_expenditure)
+
+# Plot
 plt.figure(figsize=(12,6))
 plt.bar(rd_expenditure['City'],rd_expenditure['R&D Expenditure (% of GDP)'],color='skyblue',edgecolor='black')
 plt.title(' R&D Expenditure (% of GDP) 2019-2024')
@@ -29,6 +32,9 @@ plt.show()
 
 # Patenets per 100,000 Inhabitants 2019-2024
 patents = df.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2019-2024):\n',patents)
+
+# Plot
 plt.figure(figsize=(12,6))
 sns.barplot(x='City',y='Patents per 100,000 Inhabitants',data=patents,color='lightgreen',edgecolor='black')
 plt.title('Patenets per 100,000 Inhabitants 2019-2024')
@@ -39,6 +45,9 @@ plt.show()
 
 # Unemployment Rate (%) 2019 - 2024
 unemployment_rate = df.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2019-2024):\n',unemployment_rate)
+
+# Plot
 plt.figure(figsize=(12,6))
 sns.barplot(x='City', y='Unemployment Rate (%)', edgecolor='black',data=unemployment_rate)
 plt.title('Unemployment Rate (%) 2019 - 2024')
@@ -49,6 +58,9 @@ plt.show()
 
 # Youth Unemployment Rate (%) 2019-2024
 youth_unemployed_rate = df.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2019-2024):\n',youth_unemployed_rate)
+
+# Plot
 plt.figure(figsize=(12,6))
 sns.barplot(x='City',y='Youth Unemployment Rate (%)',edgecolor='black',data=youth_unemployed_rate)
 plt.title('Youth Unemployment Rate (%) 2019-2024')
@@ -59,6 +71,9 @@ plt.show()
 
 #SME Employment (%) 2019-2024
 sme_employment = df.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2019-2024):\n',sme_employment)
+
+# Plot
 plt.figure(figsize=(12,6))
 sns.barplot(x='City',y='SME Employment (%)',edgecolor='black',data=sme_employment)
 plt.title('SME Employment (%) 2019-2024')
@@ -69,6 +84,9 @@ plt.show()
 
 #Tourism Sector Employment (%) 2019-2024
 tourism_sector_employment = df.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2019-2024):\n',tourism_sector_employment)
+
+# Plot
 plt.figure(figsize=(12,6))
 plt.bar(tourism_sector_employment['City'],tourism_sector_employment['Tourism Sector Employment (%)'],edgecolor='black')
 plt.title('Tourism Sector Employment (%) 2019-2024')
@@ -79,6 +97,9 @@ plt.show()
 
 # ICT Sector Employment (%) 2019-2024
 itc_sector_employment = df.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2019-2024):\n',itc_sector_employment)
+
+# Plot
 plt.figure(figsize=(12,6))
 sns.barplot(x='City',y='ICT Sector Employment (%)',edgecolor='black',data=itc_sector_employment)
 plt.title('ICT Sector Employment (%) 2019-2024')
@@ -87,6 +108,8 @@ plt.ylabel('ICT Sector Employment (%)')
 plt.xticks(rotation=45)
 plt.show()
 
+# Filter Rows each year (2019-2024)
+
 year_2019 = df[df['Year']==2019]
 year_2020 = df[df['Year']==2020]
 year_2021 = df[df['Year']==2021]
@@ -94,172 +117,343 @@ year_2022 = df[df['Year']==2022]
 year_2023 = df[df['Year']==2023]
 year_2024 = df[df['Year']==2024]
 
+
+# R&D Expenditure (% of GDP) (2019)
 rd_expenditure_2019 = year_2019.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP) (2019):\n',rd_expenditure_2019)
+
+# Plot
 plt.figure(figsize=(12,6))
-plt.plot(rd_expenditure_2019['City'],rd_expenditure_2019['R&D Expenditure (% of GDP)'],marker='o')
+plt.bar(rd_expenditure_2019['City'],rd_expenditure_2019['R&D Expenditure (% of GDP)'],color='lightgray',edgecolor='black')
 plt.title('2019 R&D Expenditure (% of GDP) of All City')
 plt.xlabel('City')
 plt.ylabel('R&D Expenditure (% of GDP)')
 plt.xticks(rotation=45)
 plt.show()
 
-plt.figure(figsize=(12,6))
-sns.scatterplot(x='City',y='R&D Expenditure (% of GDP)',data=rd_expenditure_2019)
-plt.title('2019 R&D Expenditure (% of GDP) of All City')
-plt.xlabel('City')
-plt.ylabel('R&D Expenditure (% of GDP)')
-plt.xticks(rotation=45)
-plt.show()
+# Patents per 100,000 Inhabitants (2019)
+patents_2019 = year_2019.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2019)\n',patents_2019)
 
-# Bar Graph
-plt.figure(figsize=(12,6))
-sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='skyblue',edgecolor='black',data=rd_expenditure_2019)
-plt.title('2019 R&D Expenditure (% of GDP) of All City')
-plt.xlabel('City')
-plt.ylabel('R&D Expenditure (% of GDP)')
-plt.xticks(rotation=45)
-plt.show()
+# Unemployment Rate (%) (2019)
+unemployment_rate_2019 = year_2019.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2019):\n',unemployment_rate_2019)
+
+# Youth Uemployment Rate (%) (2019)
+youth_unemployment_rate_2019 = year_2019.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2019):\n',youth_unemployment_rate_2019)
 
 
+# SME Employment (%) (2019)
+sme_unemployment_2019 = year_2019.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2019),',sme_unemployment_2019)
+
+# Tourism Sector Employment (%) (2019)
+tourism_sector_employment_2019 = year_2019.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2019):\n',tourism_sector_employment_2019)
+
+# ICT Sector Employment (%) (2019)
+itc_sector_employment_2019 = year_2019.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2019):\n',itc_sector_employment_2019)
+
+
+# R&D Expenditure (% of GDP) (2020)
 rd_expenditure_2020 = year_2020.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
-plt.figure(figsize=(12,6))
-plt.plot(rd_expenditure_2020['City'],rd_expenditure_2020['R&D Expenditure (% of GDP)'],marker='o')
-plt.title('2020 R&D Expenditure (% of GDP) of All City')
-plt.xlabel('City')
-plt.ylabel('R&D Expenditure (% of GDP)')
-plt.xticks(rotation=45)
-plt.show()
- 
-plt.figure(figsize=(12,6))
-sns.scatterplot(x='City',y='R&D Expenditure (% of GDP)',color='green',data=rd_expenditure_2020)
-plt.title('2020 R&D Expenditure (% of GDP) of All City')
-plt.xlabel('City')
-plt.ylabel('R&D Expenditure (% of GDP)')
-plt.xticks(rotation=45)
-plt.show()
+print('R&D Expenditure (% of GDP):\n',rd_expenditure_2020)
 
-plt.figure(figsize=(12,6))
-sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='skyblue',edgecolor='black',data=rd_expenditure_2020)
-plt.title('2020 R&D Expenditure (% of GDP) of All City')
-plt.xlabel('City')
-plt.ylabel('R&D Expenditure (% of GDP)')
-plt.xticks(rotation=45)
-plt.show()
+# Patents per 100,000 Inhabitants (2020)
+patents_2020 = year_2020.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2020):\n',patents_2020)
+
+# Unemployment Rate (%) (2019)
+unemployment_rate_2020 = year_2020.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2020):\n',unemployment_rate_2020)
+
+# Youth Unemployment Rate (%) (2020)
+youth_unemployment_rate_2020 = year_2020.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2020)\n',youth_unemployment_rate_2020)
+
+# SME Employment (%) (2020)
+sme_unemployment_2020 = year_2020.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2020)\n',sme_unemployment_2020)
+
+# Tourism Sector Employment (%) (2020)
+tourism_sector_employment_2020 = year_2020.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2020)\n',tourism_sector_employment_2020)
 
 
+# ICT Sector Employment (%) (2020)
+itc_sector_employment_2020 = year_2020.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%)(2020)\n',itc_sector_employment_2020)
+
+
+# R&D Expenditure (% of GDP) (2021)
 rd_expenditure_2021 = year_2021.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP)(2021):\n',rd_expenditure_2021)
+
 plt.figure(figsize=(12,6))
-sns.barplot(x='City',y='R&D Expenditure (% of GDP)', color = 'black', data = rd_expenditure_2021)
+plt.bar(rd_expenditure_2021['City'],rd_expenditure_2021['R&D Expenditure (% of GDP)'],color='navy',edgecolor='black')
 plt.title('2021 City and R&D Expenditure (% of GDP)')
 plt.xlabel('City')
 plt.ylabel('R&D Expenditure (% of GDP)')
 plt.xticks(rotation=45)
 plt.show()
-rd_expenditure_2022 = year_2022.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(x='City',y='R&D Expenditure (% of GDP)')
-rd_expenditure_2023 = year_2023.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
-rd_expenditure_2024 = year_2024.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 
 
-patents_2019 = year_2019.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
-patents_2020 = year_2020.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+# Patents per 100,000 Inhabitants (2021)
 patents_2021 = year_2021.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
-patents_2022 = year_2022.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
-patents_2023 = year_2023.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
-patents_2024 = year_2024.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2021):\n',patents_2021)
 
 
-unemployment_rate_2019 = year_2019.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
-unemployment_rate_2020 = year_2020.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+# Unemployment Rate (%) (2021)
 unemployment_rate_2021 = year_2021.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
-unemployment_rate_2022 = year_2022.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
-unemployment_rate_2023 = year_2023.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
-unemployment_rate_2024 = year_2024.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('SME Employment (%) (2021):\n',unemployment_rate_2021)
 
-
-youth_unemployment_rate_2019 = year_2019.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
-youth_unemployment_rate_2020 = year_2020.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+# Youth Unemployment Rate (%) (2021)
 youth_unemployment_rate_2021 = year_2021.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
-youth_unemployment_rate_2022 = year_2022.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
-youth_unemployment_rate_2023 = year_2023.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
-youth_unemployment_rate_2024 = year_2024.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('SME Employment (%)(2021):\n',youth_unemployment_rate_2021)
 
-
-sme_unemployment_2019 = year_2019.groupby('City')['SME Employment (%)'].sum().reset_index()
-sme_unemployment_2020 = year_2020.groupby('City')['SME Employment (%)'].sum().reset_index()
+# SME Employment (%) (2021)
 sme_unemployment_2021 = year_2021.groupby('City')['SME Employment (%)'].sum().reset_index()
-sme_unemployment_2022 = year_2022.groupby('City')['SME Employment (%)'].sum().reset_index()
-sme_unemployment_2023 = year_2023.groupby('City')['SME Employment (%)'].sum().reset_index()
-sme_unemployment_2024 = year_2024.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) 2021:\n',sme_unemployment_2021)
 
-
-year_2019.groupby('City')['Tourism Sector Employment (%)'].sum().plot(kind='bar',color='skyblue',edgecolor='black')
-plt.title('tourism')
-plt.show()
-tourism_sector_employment_2020 = year_2020.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+# Tourism Sector Employment (%) (2021)
 tourism_sector_employment_2021 = year_2021.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
-tourism_sector_employment_2022 = year_2022.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
-tourism_sector_employment_2023 = year_2023.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
-tourism_sector_employment_2024 = year_2024.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2021):\n',tourism_sector_employment_2021)
 
-itc_sector_employment_2019 = year_2019.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
-itc_sector_employment_2020 = year_2020.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+# ICT Sector Employment (%) (2021)
 itc_sector_employment_2021 = year_2021.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2021):\n',itc_sector_employment_2021)
+
+# R&D Expenditure (% of GDP) (2021)
+rd_expenditure_2022 = year_2022.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP) (2021):',rd_expenditure_2022)
+
+
+# Patents per 100,000 Inhabitants (2022)
+patents_2022 = year_2022.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2022):\n',patents_2022)
+
+# Unemployment Rate (%) (2022)
+unemployment_rate_2022 = year_2022.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2022):\n',unemployment_rate_2022)
+
+# Youth Unemployment Rate (%) (2022)
+youth_unemployment_rate_2022 = year_2022.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2022):\n',youth_unemployment_rate_2022)
+
+# SME Employment (%) (2022)
+sme_unemployment_2022 = year_2022.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2022):\n',sme_unemployment_2022)
+
+# Tourism Sector Employment (%) (2022)
+tourism_sector_employment_2022 = year_2022.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2022):\n',tourism_sector_employment_2022)
+
+# ICT Sector Employment (%) (2022)
 itc_sector_employment_2022 = year_2022.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2022):\n',itc_sector_employment_2022)
+
+
+# R&D Expenditure (% of GDP) (2023)
+rd_expenditure_2023 = year_2023.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP) (2023):\n',rd_expenditure_2023)
+
+# Patents per 100,000 Inhabitants (2023)
+patents_2023 = year_2023.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2023):\n',patents_2023)
+
+# Unemployment Rate (%) (2023)
+unemployment_rate_2023 = year_2023.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2023):\n',unemployment_rate_2023)
+
+# Youth Unemployment Rate (%) (2023)
+youth_unemployment_rate_2023 = year_2023.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2023):\n',youth_unemployment_rate_2023)
+
+# SME Employment (%) (2023)
+sme_unemployment_2023 = year_2023.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2023):\n',sme_unemployment_2023)
+
+# Tourism Sector Employment (%) (2023)
+tourism_sector_employment_2023 = year_2023.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2023):\n',tourism_sector_employment_2023)
+
+# ICT Sector Employment (%) (2023)
 itc_sector_employment_2023 = year_2023.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2023):\n',itc_sector_employment_2023)
+
+# R&D Expenditure (% of GDP) (2024)
+rd_expenditure_2024 = year_2024.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('R&D Expenditure (% of GDP) (2024):\n',rd_expenditure_2024)
+
+# Patents per 100,000 Inhabitants (2024)
+patents_2024 = year_2024.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('Patents per 100,000 Inhabitants (2024):\n',patents_2024)
+
+
+# Unemployment Rate (%) (2024)
+unemployment_rate_2024 = year_2024.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
+print('Unemployment Rate (%) (2024):\n',unemployment_rate_2024)
+
+
+# 'Youth Unemployment Rate (%) (2024)
+youth_unemployment_rate_2024 = year_2024.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('Youth Unemployment Rate (%) (2024):\n',youth_unemployment_rate_2024)
+
+# SME Employment (%) (2024)
+sme_unemployment_2024 = year_2024.groupby('City')['SME Employment (%)'].sum().reset_index()
+print('SME Employment (%) (2024)',sme_unemployment_2024)
+
+# Tourism Sector Employment (%) (2024)
+tourism_sector_employment_2024 = year_2024.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
+print('Tourism Sector Employment (%) (2024):\n',tourism_sector_employment_2024)
+
+# ICT Sector Employment (%) (2024)
 itc_sector_employment_2024 = year_2024.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
+print('ICT Sector Employment (%) (2024)',itc_sector_employment_2024)
+
+
+
+
 
 # Grouping Variable by City Name
 #City Ahmedabad Report 2019 to 2024
 city_ahmedabad = df[df['City']=='Ahmedabad']
+
+# City Ahmedabad R&D Expenditure 2019-2024
 city_ahmedabad_rd = city_ahmedabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Ahmedabad R&D Expenditure 2019-2024:\n',city_ahmedabad_rd)
+
+# Plot
 plt.figure(figsize=(12,6))
-sns.barplot(x='Year',y='R&D Expenditure (% of GDP)',color='skyblue',edgecolor='black',data=city_ahmedabad_rd)
-plt.title('r&d')
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='purple',marker='o',data=city_ahmedabad_rd)
+plt.title('City Ahmedabad R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
 plt.show()
+
+# City Ahmedabad Patents per 100,000 Inhabitants 2019-2024
 city_ahmedabad_patents = city_ahmedabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Ahmedabad Patents per 100,000 Inhabitants 2019-2024:\n',city_ahmedabad_patents)
+
+# City Ahmedabad Unemployment Rate 2019-2024
 city_ahmedabad_unemployment_rate = city_ahmedabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Ahmedabad Unemployment Rate 2019-2024:\n',city_ahmedabad_unemployment_rate)
+
+# City Ahmedabad Youth Unemployment Rate 2019-2024
 city_ahmedabad_youth_unemployment = city_ahmedabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Ahmedabad Youth Unemployment Rate 2019-2024:\n',city_ahmedabad_youth_unemployment)
+
+# City Ahmedabad SME Employment 2019-2024
 city_ahmedabad_sme = city_ahmedabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Ahmedabad Youth SME Employment 2019-2024:\n',city_ahmedabad_sme)
+
+# City Ahmedabad Tourism 2019-2024
 city_ahmedabad_tourism = city_ahmedabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Ahmedabad Tourism 2019-2024:\n',city_ahmedabad_tourism)
+
+
+# City Ahmedabad ICT Sector Employment 2019-2024
 city_ahmedabad_ict = city_ahmedabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Ahmedabad ICT Sector Employment 2019-2024:\n',city_ahmedabad_ict)
 
 
 #City Bengaluru Report 2019 to 2024
 
 city_bengaluru = df[df['City']=='Bengaluru']
+
+# City Bengaluru R&D Expenditure 2019-2024
 city_bengaluru_rd = city_bengaluru.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Bengaluru R&D Expenditure 2019-2024:\n',city_bengaluru_rd)
+
+# City Bengaluru Patenets are Inhabitatns 2019-2024
 city_bengaluru_patents = city_bengaluru.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Bengaluru Patenets are Inhabitatns 2019-2024:\n',city_bengaluru_patents)
+
+# City Bengaluru Unemployment Rate 2019-2024
 city_bengaluru_unemployment_rate = city_bengaluru.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Bengaluru Unemployment Rate 2019-2024:\n',city_bengaluru_unemployment_rate)
+
+# City Bengaluru Youth Unemployment 2019-2024
 city_bengaluru_youth_unemployment = city_bengaluru.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Bengaluru Youth Unemployment 2019-2024:\n',city_bengaluru_youth_unemployment)
+
+# City Bengaluru SME Employment 2019-2024
 city_bengaluru_sme = city_bengaluru.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Bengaluru SME Employment 2019-2024:\n',city_bengaluru_sme)
+
+# City Bengaluru Tourism Sector Employeement 2019-2020
 city_bengaluru_tourism = city_bengaluru.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Bengaluru Tourism Sector Employeement 2019-2020:\n',city_bengaluru_tourism)
+
+# City Bengaluru ICT sector employment 2019-2024
 city_bengaluru_ict = city_bengaluru.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Bengaluru ICT sector employment 2019-2024:\n',city_bengaluru_ict)
 
 #City Mumbai Report 2019 to 2024
 
 city_mumbai = df[df['City']=='Mumbai']
 
+# City Mumbai R&D Expenditure 2019-2024
 city_mumbai_rd = city_mumbai.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Mumbai R&D Expenditure 2019-2024:\n',city_mumbai_rd)
+
+# City Mumbai Patents per Inhabitants 2019-2024
 city_mumbai_patents = city_mumbai.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Mumbai Patents per Inhabitants 2019-2024:\n',city_mumbai_patents)
+
+# City Mumbai Unemployment Rate 2019-2024
 city_mumbai_unemployment_rate = city_mumbai.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Mumbai Unemployment Rate 2019-2024:\n',city_mumbai_unemployment_rate)
+
+# City Mumbai Youth Unemployment Rate 2019-2024
 city_mumbai_youth_unemployment = city_mumbai.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Mumbai Youth Unemployment Rate 2019-2024:\n',city_mumbai_youth_unemployment)
+
+# City Mumbai SME Employment 2019-2024
 city_mumbai_sme = city_mumbai.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Mumbai SME Employment 2019-2024:\n',city_mumbai_sme)
+
+# City Mumbai Tourism Sector Employment 2019-2024
 city_mumbai_tourism = city_mumbai.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Mumbai Tourism Sector Employment 2019-2024:\n',city_mumbai_tourism)
+
+# City Mumbai ICT Sector Employment 2019-2024
 city_mumbai_ict = city_mumbai.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Mumbai ICT Sector Employment 2019-2024:\n',city_mumbai_ict)
 
 #City Hyderabad Report 2019 to 2024
 
 city_hyderabad = df[df['City']=='Hyderabad']
 
+# City Hyderabad R&D Expenditure 2019-2024
 city_hyderabad_rd = city_hyderabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Hyderabad R&D Expenditure 2019-2024:\n',city_hyderabad_rd)
+
+# City Hyderabad Patents Inhabitants 2019-2024
 city_hyderabad_patents = city_hyderabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Hyderabad Patents Inhabitants 2019-2024:\n',city_hyderabad_patents)
+
+# City Hyderabad Unemployment Rate 2019-2024
 city_hyderabad_unemployment_rate =city_hyderabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Hyderabad Unemployment Rate 2019-2024:\n',city_hyderabad_unemployment_rate)
+
+# City Hyderabad Youth Unemployment Rate 2019-2024
 city_hyderabad_youth_unemployment = city_hyderabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Hyderabad Youth Unemployment Rate 2019-2024:\n',city_hyderabad_youth_unemployment)
+
+# City Hyderabad SME Employment 2019-2024
 city_hyderabad_sme = city_hyderabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Hyderabad SME Hyderabad 2019-2024:\n',city_hyderabad_sme)
+
+# City Hyderabad Tourism Sector Employment 2019-2024
 city_hyderabad_tourism = city_hyderabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print(' City Hyderabad Tourism Sector Employment 2019-2024:\n',city_hyderabad_tourism)
+
+# City Hyderabad ICT Sector Employment 2019-2024
 city_hyderabad_ict = city_hyderabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Hyderabad ICT Sector Employment 2019-2024:\n',city_hyderabad_ict)
 
 #City Chennai Report 2019 to 2024
 
