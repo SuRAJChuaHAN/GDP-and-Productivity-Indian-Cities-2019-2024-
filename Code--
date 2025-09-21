@@ -5,6 +5,10 @@ import seaborn as sns
 
 df = pd.read_excel('C:\\Users\\DELL\\Desktop\\GDP and Productivity of Indian Cities (2019-2024).xlsx')
 
+dtypes=df.dtypes
+print(dtypes)
+
+
 # Description of Data
 desc = df.describe()
 print(desc)
@@ -21,6 +25,13 @@ plt.show()
 rd_expenditure = df.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP) (2019-2024):\n',rd_expenditure)
 
+# sns.heatmap(df.corr(),annot=True,cmap='YlGnBu')
+# plt.show()
+
+# df['City']=pd.to_numeric(df['City'])
+# df['Year']=pd.to_numeric(df['Year'])
+
+print(df.dtypes)
 # Plot
 plt.figure(figsize=(12,6))
 plt.bar(rd_expenditure['City'],rd_expenditure['R&D Expenditure (% of GDP)'],color='skyblue',edgecolor='black')
@@ -122,6 +133,7 @@ year_2024 = df[df['Year']==2024]
 rd_expenditure_2019 = year_2019.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP) (2019):\n',rd_expenditure_2019)
 
+
 # Plot
 plt.figure(figsize=(12,6))
 plt.bar(rd_expenditure_2019['City'],rd_expenditure_2019['R&D Expenditure (% of GDP)'],color='lightgray',edgecolor='black')
@@ -135,65 +147,194 @@ plt.show()
 patents_2019 = year_2019.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2019)\n',patents_2019)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='yellow',edgecolor='black',data=year_2019)
+plt.title('Patents per 100,000 Inhabitants (2019)')
+plt.xlabel('City')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
+
 # Unemployment Rate (%) (2019)
 unemployment_rate_2019 = year_2019.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('Unemployment Rate (%) (2019):\n',unemployment_rate_2019)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='blue',edgecolor='black',data=unemployment_rate_2019)
+plt.title('Unemployment Rate (%) (2019)')
+plt.xlabel('City')
+plt.ylabel('')
+plt.xticks(rotation=45)
+plt.show()
 
 # Youth Uemployment Rate (%) (2019)
 youth_unemployment_rate_2019 = year_2019.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('Youth Unemployment Rate (%) (2019):\n',youth_unemployment_rate_2019)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='silver',edgecolor='black',data=youth_unemployment_rate_2019)
+plt.title('Youth Uemployment Rate (%) (2019)')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate')
+plt.xticks(rotation=45)
+plt.show()
 
 # SME Employment (%) (2019)
 sme_unemployment_2019 = year_2019.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) (2019),',sme_unemployment_2019)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='navy',edgecolor='black',data=sme_unemployment_2019)
+plt.title('SME Employment 2019-2024')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Tourism Sector Employment (%) (2019)
 tourism_sector_employment_2019 = year_2019.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2019):\n',tourism_sector_employment_2019)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='gray',edgecolor='black',data=tourism_sector_employment_2019)
+plt.title('Tourism Sector Employment (%) 2019')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # ICT Sector Employment (%) (2019)
 itc_sector_employment_2019 = year_2019.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%) (2019):\n',itc_sector_employment_2019)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='teal',edgecolor='black',data=itc_sector_employment_2019)
+plt.title('ICT Sector Employment (%) (2019)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # R&D Expenditure (% of GDP) (2020)
 rd_expenditure_2020 = year_2020.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP):\n',rd_expenditure_2020)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='magenta',edgecolor='black',data=rd_expenditure_2020)
+plt.title('R&D Expenditure (% of GDP) (2020)')
+plt.xlabel('City')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Patents per 100,000 Inhabitants (2020)
 patents_2020 = year_2020.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2020):\n',patents_2020)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='lightblue',edgecolor='black',data=patents_2020)
+plt.title('Patents per 100,000 Inhabitants (2020)')
+plt.xlabel('City')
+plt.ylabel('Patents Per 100,000 Inhabitants (2020)')
+plt.xticks(rotation=45)
+plt.show()
 
 # Unemployment Rate (%) (2019)
 unemployment_rate_2020 = year_2020.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('Unemployment Rate (%) (2020):\n',unemployment_rate_2020)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='purple',edgecolor='black',data=unemployment_rate_2020)
+plt.title('Unemployment Rate (%) (2020)')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate %')
+plt.xticks(rotation=45)
+plt.show()
+
 # Youth Unemployment Rate (%) (2020)
 youth_unemployment_rate_2020 = year_2020.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('Youth Unemployment Rate (%) (2020)\n',youth_unemployment_rate_2020)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='brown',edgecolor='black',data=youth_unemployment_rate_2020)
+plt.title('Youth Unemployment Rate (%) (2020)')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # SME Employment (%) (2020)
 sme_unemployment_2020 = year_2020.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) (2020)\n',sme_unemployment_2020)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='orange',edgecolor='black',data=sme_unemployment_2020)
+plt.title('SME Employment(%) (2020)')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Tourism Sector Employment (%) (2020)
 tourism_sector_employment_2020 = year_2020.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2020)\n',tourism_sector_employment_2020)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='cyan',edgecolor='black',data=tourism_sector_employment_2020)
+plt.title('Tourism Sector Employment (%) (2020)')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 
 # ICT Sector Employment (%) (2020)
 itc_sector_employment_2020 = year_2020.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%)(2020)\n',itc_sector_employment_2020)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='navy',edgecolor='black',data=itc_sector_employment_2020)
+plt.title('ICT Sector Employment (%) (2020)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # R&D Expenditure (% of GDP) (2021)
 rd_expenditure_2021 = year_2021.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP)(2021):\n',rd_expenditure_2021)
 
-plt.figure(figsize=(12,6))
-plt.bar(rd_expenditure_2021['City'],rd_expenditure_2021['R&D Expenditure (% of GDP)'],color='navy',edgecolor='black')
-plt.title('2021 City and R&D Expenditure (% of GDP)')
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='cyan',edgecolor='black',data=rd_expenditure_2021)
+plt.title('R&D Expenditure (% of GDP) (2021)')
 plt.xlabel('City')
 plt.ylabel('R&D Expenditure (% of GDP)')
 plt.xticks(rotation=45)
@@ -204,120 +345,388 @@ plt.show()
 patents_2021 = year_2021.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2021):\n',patents_2021)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='brown',edgecolor='black',data=patents_2021)
+plt.title('Patents per 100,000 Inhabitants (2021)')
+plt.xlabel('City')
+plt.ylabel('Patents Per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
+
 
 # Unemployment Rate (%) (2021)
 unemployment_rate_2021 = year_2021.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('SME Employment (%) (2021):\n',unemployment_rate_2021)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='navy',edgecolor='black',data=unemployment_rate_2021)
+plt.title('Unemployment Rate (%) (2021)')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Youth Unemployment Rate (%) (2021)
 youth_unemployment_rate_2021 = year_2021.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('SME Employment (%)(2021):\n',youth_unemployment_rate_2021)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='gray',edgecolor='black',data=youth_unemployment_rate_2021)
+plt.title('Youth Unemployment Rate (%) (2021)')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # SME Employment (%) (2021)
 sme_unemployment_2021 = year_2021.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) 2021:\n',sme_unemployment_2021)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='teal',edgecolor='black',data=sme_unemployment_2021)
+plt.title('SME Employment (%) (2021)')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Tourism Sector Employment (%) (2021)
 tourism_sector_employment_2021 = year_2021.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2021):\n',tourism_sector_employment_2021)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='gray',edgecolor='black',data=tourism_sector_employment_2021)
+plt.title('Tourism Sector Employment (%) (2021)')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # ICT Sector Employment (%) (2021)
 itc_sector_employment_2021 = year_2021.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%) (2021):\n',itc_sector_employment_2021)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='lightblue',edgecolor='black',data=itc_sector_employment_2021)
+plt.title('ICT Sector Employment (%) (2021)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # R&D Expenditure (% of GDP) (2021)
 rd_expenditure_2022 = year_2022.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP) (2021):',rd_expenditure_2022)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='lightblue',edgecolor='black',data=rd_expenditure_2022)
+plt.title('R&D Expenditure (% of GDP) (2021)')
+plt.xlabel('City')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks(rotation=45)
+plt.show()
 
 
 # Patents per 100,000 Inhabitants (2022)
 patents_2022 = year_2022.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2022):\n',patents_2022)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='navy',edgecolor='black',data=patents_2022)
+plt.title('Patents per 100,000 Inhabitants (2022)')
+plt.xlabel('City')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
+
 # Unemployment Rate (%) (2022)
 unemployment_rate_2022 = year_2022.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('Unemployment Rate (%) (2022):\n',unemployment_rate_2022)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='teal',edgecolor='black',data=unemployment_rate_2022)
+plt.title('Unemployment Rate (%) (2022)')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # Youth Unemployment Rate (%) (2022)
 youth_unemployment_rate_2022 = year_2022.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('Youth Unemployment Rate (%) (2022):\n',youth_unemployment_rate_2022)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='lightgreen',edgecolor='black',data=youth_unemployment_rate_2022)
+plt.title('Youth Unemployment Rate (% (2022))')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # SME Employment (%) (2022)
 sme_unemployment_2022 = year_2022.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) (2022):\n',sme_unemployment_2022)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='magenta',edgecolor='black',data=sme_unemployment_2022)
+plt.title('SME Employment (%) (2022)')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # Tourism Sector Employment (%) (2022)
 tourism_sector_employment_2022 = year_2022.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2022):\n',tourism_sector_employment_2022)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='silver',edgecolor='black',data=tourism_sector_employment_2022)
+plt.title('Tourism Sector Employment (%) (2022)')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # ICT Sector Employment (%) (2022)
 itc_sector_employment_2022 = year_2022.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%) (2022):\n',itc_sector_employment_2022)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='navy',edgecolor='black',data=itc_sector_employment_2022)
+plt.title('ICT Sector Employment (%) (2022)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 
 # R&D Expenditure (% of GDP) (2023)
 rd_expenditure_2023 = year_2023.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP) (2023):\n',rd_expenditure_2023)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='teal',edgecolor='black',data=rd_expenditure_2023)
+plt.title('R&D Expenditure (% of GDP) (2023)')
+plt.xlabel('City')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Patents per 100,000 Inhabitants (2023)
 patents_2023 = year_2023.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2023):\n',patents_2023)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='green',edgecolor='black',data=patents_2023)
+plt.title('Patents per 100,000 Inhabitants (2023)')
+plt.xlabel('City')
+plt.ylabel('Patents Per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
 
 # Unemployment Rate (%) (2023)
 unemployment_rate_2023 = year_2023.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('Unemployment Rate (%) (2023):\n',unemployment_rate_2023)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='red',edgecolor='black',data=unemployment_rate_2023)
+plt.title('Unemployment Rate (%) (2023)')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Youth Unemployment Rate (%) (2023)
 youth_unemployment_rate_2023 = year_2023.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('Youth Unemployment Rate (%) (2023):\n',youth_unemployment_rate_2023)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='navy',edgecolor='black',data=youth_unemployment_rate_2023)
+plt.title('Youth Unemployment Rate (%) (2023)')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # SME Employment (%) (2023)
 sme_unemployment_2023 = year_2023.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) (2023):\n',sme_unemployment_2023)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='lightblue',edgecolor='black',data=sme_unemployment_2023)
+plt.title('SME Employment (%) 2023')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Tourism Sector Employment (%) (2023)
 tourism_sector_employment_2023 = year_2023.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2023):\n',tourism_sector_employment_2023)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='blue',edgecolor='black',data=tourism_sector_employment_2023)
+plt.title('Tourism Sector Employment (%) (2023)')
+plt.xlabel('City')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # ICT Sector Employment (%) (2023)
 itc_sector_employment_2023 = year_2023.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%) (2023):\n',itc_sector_employment_2023)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='lightblue',edgecolor='black',data=itc_sector_employment_2023)
+plt.title('ICT Sector Employment (%) (2023)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # R&D Expenditure (% of GDP) (2024)
 rd_expenditure_2024 = year_2024.groupby('City')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('R&D Expenditure (% of GDP) (2024):\n',rd_expenditure_2024)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='R&D Expenditure (% of GDP)',color='lightblue',edgecolor='black',data=rd_expenditure_2024)
+plt.title('R&D Expenditure (% of GDP) (2024)')
+plt.xlabel('City')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks(rotation=45)
+plt.show()
+
 # Patents per 100,000 Inhabitants (2024)
 patents_2024 = year_2024.groupby('City')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('Patents per 100,000 Inhabitants (2024):\n',patents_2024)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Patents per 100,000 Inhabitants',color='silver',edgecolor='black',data=patents_2024)
+plt.title('Patents per 100,000 Inhabitants (2024)')
+plt.xlabel('City')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks(rotation=45)
+plt.show()
 
 
 # Unemployment Rate (%) (2024)
 unemployment_rate_2024 = year_2024.groupby('City')['Unemployment Rate (%)'].sum().reset_index()
 print('Unemployment Rate (%) (2024):\n',unemployment_rate_2024)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Unemployment Rate (%)',color='gray',edgecolor='black',data=unemployment_rate_2024)
+plt.title('Unemployment Rate (%) (2024)')
+plt.xlabel('City')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 
 # 'Youth Unemployment Rate (%) (2024)
 youth_unemployment_rate_2024 = year_2024.groupby('City')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('Youth Unemployment Rate (%) (2024):\n',youth_unemployment_rate_2024)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Youth Unemployment Rate (%)',color='teal',edgecolor='black',data=youth_unemployment_rate_2024)
+plt.title('Youth Unemployment Rate (%) (2024)')
+plt.xlabel('City')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # SME Employment (%) (2024)
 sme_unemployment_2024 = year_2024.groupby('City')['SME Employment (%)'].sum().reset_index()
 print('SME Employment (%) (2024)',sme_unemployment_2024)
+
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='SME Employment (%)',color='cyan',edgecolor='black',data=sme_unemployment_2024)
+plt.title('SME Employment (%) (2024)')
+plt.xlabel('City')
+plt.ylabel('SME Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # Tourism Sector Employment (%) (2024)
 tourism_sector_employment_2024 = year_2024.groupby('City')['Tourism Sector Employment (%)'].sum().reset_index()
 print('Tourism Sector Employment (%) (2024):\n',tourism_sector_employment_2024)
 
+# Plot
+
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='Tourism Sector Employment (%)',color='silver',edgecolor='black',data=tourism_sector_employment_2024)
+plt.title('Tourism Sector Employment (%) (2024)')
+plt.xlabel('City')
+plt.ylabel('Tourism sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
+
 # ICT Sector Employment (%) (2024)
 itc_sector_employment_2024 = year_2024.groupby('City')['ICT Sector Employment (%)'].sum().reset_index()
 print('ICT Sector Employment (%) (2024)',itc_sector_employment_2024)
 
+# Plot
 
-
-
+plt.figure(figsize=(12,8))
+sns.barplot(x='City',y='ICT Sector Employment (%)',color='lightgreen',edgecolor='black',data=itc_sector_employment_2024)
+plt.title('ICT Sector Employment (%) (2024)')
+plt.xlabel('City')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks(rotation=45)
+plt.show()
 
 # Grouping Variable by City Name
+
+
 #City Ahmedabad Report 2019 to 2024
 city_ahmedabad = df[df['City']=='Ahmedabad']
 
@@ -337,26 +746,98 @@ plt.show()
 city_ahmedabad_patents = city_ahmedabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('City Ahmedabad Patents per 100,000 Inhabitants 2019-2024:\n',city_ahmedabad_patents)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='red',marker='o',data=city_ahmedabad_patents)
+plt.title('Patents per 100,000 Inhabitants (2019-2024)')
+plt.xlabel('Year')
+plt.ylabel('Patents Per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Ahmedabad Unemployment Rate 2019-2024
 city_ahmedabad_unemployment_rate = city_ahmedabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
 print('City Ahmedabad Unemployment Rate 2019-2024:\n',city_ahmedabad_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='blue',marker='o',data=city_ahmedabad_unemployment_rate)
+plt.title('City Ahmedabad Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Ahmedabad Youth Unemployment Rate 2019-2024
 city_ahmedabad_youth_unemployment = city_ahmedabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('City Ahmedabad Youth Unemployment Rate 2019-2024:\n',city_ahmedabad_youth_unemployment)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_ahmedabad_youth_unemployment)
+plt.title('Youth Unemployment Rate (%) (2019-2024)')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Ahmedabad SME Employment 2019-2024
 city_ahmedabad_sme = city_ahmedabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
 print('City Ahmedabad Youth SME Employment 2019-2024:\n',city_ahmedabad_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='yellow',marker='o',data=city_ahmedabad_sme)
+plt.title('City Ahmedabad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Ahmedabad Tourism 2019-2024
 city_ahmedabad_tourism = city_ahmedabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
 print('City Ahmedabad Tourism 2019-2024:\n',city_ahmedabad_tourism)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='purple',marker='o',data=city_ahmedabad_tourism)
+plt.title('City Ahmedabad Tourism 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 
 # City Ahmedabad ICT Sector Employment 2019-2024
 city_ahmedabad_ict = city_ahmedabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
 print('City Ahmedabad ICT Sector Employment 2019-2024:\n',city_ahmedabad_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_ahmedabad_ict)
+plt.title('City Ahmedabad ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 
 #City Bengaluru Report 2019 to 2024
@@ -367,29 +848,113 @@ city_bengaluru = df[df['City']=='Bengaluru']
 city_bengaluru_rd = city_bengaluru.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('City Bengaluru R&D Expenditure 2019-2024:\n',city_bengaluru_rd)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='blue',marker='o',data=city_bengaluru_rd)
+plt.title('City Bengaluru R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Bengaluru Patenets are Inhabitatns 2019-2024
 city_bengaluru_patents = city_bengaluru.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('City Bengaluru Patenets are Inhabitatns 2019-2024:\n',city_bengaluru_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='red',marker='o',data=city_bengaluru_patents)
+plt.title('City Bengaluru Patenets are Inhabitatns 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Bengaluru Unemployment Rate 2019-2024
 city_bengaluru_unemployment_rate = city_bengaluru.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
 print('City Bengaluru Unemployment Rate 2019-2024:\n',city_bengaluru_unemployment_rate)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='purple',marker='o',data=city_bengaluru_unemployment_rate)
+plt.title('City Bengaluru Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Bengaluru Youth Unemployment 2019-2024
 city_bengaluru_youth_unemployment = city_bengaluru.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('City Bengaluru Youth Unemployment 2019-2024:\n',city_bengaluru_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_bengaluru_youth_unemployment)
+plt.title('City Bengaluru Youth Unemployment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Bengaluru SME Employment 2019-2024
 city_bengaluru_sme = city_bengaluru.groupby('Year')['SME Employment (%)'].sum().reset_index()
 print('City Bengaluru SME Employment 2019-2024:\n',city_bengaluru_sme)
 
-# City Bengaluru Tourism Sector Employeement 2019-2020
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_bengaluru_sme)
+plt.title('City Bengaluru SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bengaluru Tourism Sector Employeement 2019-2024
 city_bengaluru_tourism = city_bengaluru.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
 print('City Bengaluru Tourism Sector Employeement 2019-2020:\n',city_bengaluru_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_bengaluru_tourism)
+plt.title('City Bengaluru Tourism Sector Employeement 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Bengaluru ICT sector employment 2019-2024
 city_bengaluru_ict = city_bengaluru.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
 print('City Bengaluru ICT sector employment 2019-2024:\n',city_bengaluru_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='orange',marker='o',data=city_bengaluru_ict)
+plt.title('City Bengaluru ICT sector employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 #City Mumbai Report 2019 to 2024
 
@@ -399,29 +964,113 @@ city_mumbai = df[df['City']=='Mumbai']
 city_mumbai_rd = city_mumbai.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('City Mumbai R&D Expenditure 2019-2024:\n',city_mumbai_rd)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='purple',marker='o',data=city_mumbai_rd)
+plt.title('City Mumbai R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Mumbai Patents per Inhabitants 2019-2024
 city_mumbai_patents = city_mumbai.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('City Mumbai Patents per Inhabitants 2019-2024:\n',city_mumbai_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='brown',marker='o',data=city_mumbai_patents)
+plt.title('City Mumbai Patents per Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Mumbai Unemployment Rate 2019-2024
 city_mumbai_unemployment_rate = city_mumbai.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
 print('City Mumbai Unemployment Rate 2019-2024:\n',city_mumbai_unemployment_rate)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_mumbai_unemployment_rate)
+plt.title('City Mumbai Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Mumbai Youth Unemployment Rate 2019-2024
 city_mumbai_youth_unemployment = city_mumbai.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('City Mumbai Youth Unemployment Rate 2019-2024:\n',city_mumbai_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_mumbai_youth_unemployment)
+plt.title('City Mumbai Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Mumbai SME Employment 2019-2024
 city_mumbai_sme = city_mumbai.groupby('Year')['SME Employment (%)'].sum().reset_index()
 print('City Mumbai SME Employment 2019-2024:\n',city_mumbai_sme)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_mumbai_sme)
+plt.title('City Mumbai SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Mumbai Tourism Sector Employment 2019-2024
 city_mumbai_tourism = city_mumbai.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
 print('City Mumbai Tourism Sector Employment 2019-2024:\n',city_mumbai_tourism)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='yellow',marker='o',data=city_mumbai_tourism)
+plt.title('City Mumbai Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Mumbai ICT Sector Employment 2019-2024
 city_mumbai_ict = city_mumbai.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
 print('City Mumbai ICT Sector Employment 2019-2024:\n',city_mumbai_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_mumbai_ict)
+plt.title('City Mumbai ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 #City Hyderabad Report 2019 to 2024
 
@@ -431,342 +1080,3125 @@ city_hyderabad = df[df['City']=='Hyderabad']
 city_hyderabad_rd = city_hyderabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
 print('City Hyderabad R&D Expenditure 2019-2024:\n',city_hyderabad_rd)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_hyderabad_rd)
+plt.title('R&D Expenditure (% of GDP)')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Hyderabad Patents Inhabitants 2019-2024
 city_hyderabad_patents = city_hyderabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
 print('City Hyderabad Patents Inhabitants 2019-2024:\n',city_hyderabad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='red',marker='o',data=city_hyderabad_patents)
+plt.title('City Hyderabad Patents Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Hyderabad Unemployment Rate 2019-2024
 city_hyderabad_unemployment_rate =city_hyderabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
 print('City Hyderabad Unemployment Rate 2019-2024:\n',city_hyderabad_unemployment_rate)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='green',marker='o',data=city_hyderabad_unemployment_rate)
+plt.title('City Hyderabad Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Hyderabad Youth Unemployment Rate 2019-2024
 city_hyderabad_youth_unemployment = city_hyderabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
 print('City Hyderabad Youth Unemployment Rate 2019-2024:\n',city_hyderabad_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='blue',marker='o',data=city_hyderabad_youth_unemployment)
+plt.title('City Hyderabad Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Hyderabad SME Employment 2019-2024
 city_hyderabad_sme = city_hyderabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
 print('City Hyderabad SME Hyderabad 2019-2024:\n',city_hyderabad_sme)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='yellow',marker='o',data=city_hyderabad_sme)
+plt.title('City Hyderabad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 # City Hyderabad Tourism Sector Employment 2019-2024
 city_hyderabad_tourism = city_hyderabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
 print(' City Hyderabad Tourism Sector Employment 2019-2024:\n',city_hyderabad_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_hyderabad_tourism)
+plt.title('City Hyderabad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Hyderabad ICT Sector Employment 2019-2024
 city_hyderabad_ict = city_hyderabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
 print('City Hyderabad ICT Sector Employment 2019-2024:\n',city_hyderabad_ict)
 
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_hyderabad_ict)
+plt.title('City Hyderabad ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 #City Chennai Report 2019 to 2024
 
 city_chennai = df[df['City']=='Chennai']
 
+# City Chennai R&D Expenditure 2019-2024
 city_chennai_rd = city_chennai.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Chennai R&D Expenditure 2019-2024:\n',city_chennai_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_chennai_rd)
+plt.title('City Chennai R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai Patents Per 100,000 Inhabitants 2019-2024
 city_chennai_patents =city_chennai.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Chennai Patents Per 100,000 Inhabitants 2019-2024:\n',city_chennai_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_chennai_patents)
+plt.title('City Chennai Patents Per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai Unemployment Rate 2019-2024
 city_chennai_unemployment_rate = city_chennai.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Chennai Unemployment Rate 2019-2024:\n',city_chennai_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_chennai_unemployment_rate)
+plt.title('City Chennai Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai Youth Unemployment Rate 2019-2024
 city_chennai_youth_unemployment = city_chennai.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Chennai Youth Unemployment Rate 2019-2024:\n',city_chennai_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_chennai_youth_unemployment)
+plt.title('City Chennai Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai SME Employment 2019-2024
 city_chennai_sme = city_chennai.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Chennai SME Employment 2019-2024:\n',city_chennai_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_chennai_sme)
+plt.title('City Chennai SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai Tourism Sector Employment 2019-2024
 city_chennai_tourism = city_chennai.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Chennai Tourism Sector Employment 2019-2024:\n',city_chennai_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='yellow',marker='o',data=city_chennai_tourism)
+plt.title('City Chennai Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Chennai ICT Sector Employment 2019-2024
 city_chennai_ict = city_chennai.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Chennai ICT Sector Employment 2019-2024:\n',city_chennai_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_chennai_ict)
+plt.title('City Chennai ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 #City Kolkata Report 2019 to 2024
 
 city_kolkata = df[df['City']=='Kolkata']
 
+# City Kolkata R&D Expenditure 2019-2024
 city_kolkata_rd = city_kolkata.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Kolkata R&D Expenditure 2019-2024:\n',city_kolkata_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_kolkata_rd)
+plt.title('City Kolkata R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata Patents are 100,000 inhabitants 2019-2024
 city_kolkata_patents =city_kolkata.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Kolkata R&D Expenditure 2019-2024:\n',city_kolkata_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_kolkata_patents)
+plt.title('City Kolkata Patents are 100,000 inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata Unemployment Rate 2019-2024
 city_kolkata_unemployment_rate = city_kolkata.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Kolkata Unemployment Rate 2019-2024:\n',city_kolkata_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_kolkata_unemployment_rate)
+plt.title('City Kolkata Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata Youth unemployment Rate 2019-2024
 city_kolkata_youth_unemployment = city_kolkata.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Kolkata Youth unemployment Rate 2019-2024:\n',city_kolkata_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_kolkata_youth_unemployment)
+plt.title('City Kolkata Youth unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata SME Employment 2019-2024
 city_kolkata_sme = city_kolkata.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Kolkata SME Employment 2019-2024:\n',city_kolkata_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_kolkata_sme)
+plt.title('City Kolkata SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata Tourism Sector Employment 2019-2024
 city_kolkata_tourism = city_kolkata.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Kolkata Tourism Sector Employment 2019-2024')
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='black',marker='o',data=city_kolkata_tourism)
+plt.title('City Kolkata Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kolkata ICT Sector Employment 2019-2024
 city_kolkata_ict = city_kolkata.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Kolkata ICT Sector Employment 2019-2024:\n',city_kolkata_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_kolkata_ict)
+plt.title('City Kolkata ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Delhi report 2019 to 2024
 
 city_delhi = df[df['City']=='Delhi']
 
+# City Delhi R&D Expenditure 2019-2024
 city_delhi_rd = city_delhi.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Delhi R&D Expenditure 2019-2024:\n',city_delhi_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_delhi_rd)
+plt.title('City Delhi R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi Patents per 100,000 Inhabitants 2019-2024
 city_delhi_patents = city_delhi.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Delhi Patents per 100,000 Inhabitants 2019-2024:\n',city_delhi_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_delhi_patents)
+plt.title('City Delhi Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi Unemployment Rate 2019-2024
 city_delhi_unemployment_rate = city_delhi.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Delhi Unemployment Rate 2019-2024:\n',city_delhi_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_delhi_unemployment_rate)
+plt.title('City Delhi Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi Youth Unemployment Rate 2019-2024
 city_delhi_youth_unemployment = city_delhi.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Delhi Youth Unemployment Rate 2019-2024:\n',city_delhi_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_delhi_youth_unemployment)
+plt.title('City Delhi Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi SME Employment Rate 2019-2024
 city_delhi_sme = city_delhi.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Delhi SME Employment Rate 2019-2024:\n',city_delhi_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_delhi_sme)
+plt.title('City Delhi SME Employment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi Tourism Sector Employment 2019-2024
 city_delhi_tourism = city_delhi.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Delhi Tourism Sector Employment 2019-2024:\n',city_delhi_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_delhi_tourism)
+plt.title('City Delhi Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Delhi ICT Sector Employment 2019-2024
 city_delhi_ict = city_delhi.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Delhi ICT Sector Employment 2019-2024:\n',city_delhi_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_delhi_ict)
+plt.title('City Delhi ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Pune report 2019 to 2024
 
 city_pune = df[df['City']=='Pune']
 
+# City Pune R&D Expenditure 2019-2024
 city_pune_rd = city_pune.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Pune R&D Expenditure 2019-2024:\n',city_pune_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_pune_rd)
+plt.title('City Pune R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune Patents per 100,000 Inhabitants 2019-2024
 city_pune_patents = city_pune.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Pune Patents per 100,000 Inhabitants 2019-2024:\n',city_pune_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_pune_patents)
+plt.title('City Pune Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune Unemployment Rate 2019-2024
 city_pune_unemployment_rate = city_pune.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Pune Unemployment Rate 2019-2024:\n',city_pune_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_pune_unemployment_rate)
+plt.title('City Pune Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune Youth Unemployment Rate 2019-2024
 city_pune_youth_unemployment = city_pune.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Pune Youth Unemployment Rate 2019-2024:\n',city_pune_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_pune_youth_unemployment)
+plt.title('City Pune Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune SME Employment 2019-2024
 city_pune_sme = city_pune.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Pune SME Employment 2019-2024:\n',city_pune_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_pune_sme)
+plt.title('City Pune SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune Tourism Employment 2019-2024
 city_pune_tourism = city_pune.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Pune Tourism Employment 2019-2024:\n',city_pune_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_pune_tourism)
+plt.title('City Pune Tourism Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Pune ICT sector employment 2019-2024
 city_pune_ict = city_pune.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Pune ICT sector employment 2019-2024:\n',city_pune_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_pune_ict)
+plt.title('City Pune ICT sector employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 
 # City Surat report 2019 to 2024
 
 city_surat = df[df['City']=='Surat']
 
+# City Surat R&D Expenditure 2019-2024
 city_surat_rd = city_surat.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Surat R&D Expenditure 2019-2024:\n',city_surat_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_surat_rd)
+plt.title('City Surat R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat Patents per 100,000 Inhabitants 2019-2024
 city_surat_patents = city_surat.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Surat Patents per 100,000 Inhabitants 2019-2024:\n',city_surat_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_surat_patents)
+plt.title('City Surat Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat Unemployment Rate 2019-2024
 city_surat_unemployment_rate = city_surat.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Surat Unemployment Rate 2019-2024:\n',city_surat_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_surat_unemployment_rate)
+plt.title('City Surat Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat Youth Unemployment Rate 2019-2024
 city_surat_youth_unemployment = city_surat.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Surat Youth Unemployment Rate 2019-2024:\n',city_surat_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_surat_youth_unemployment)
+plt.title('City Surat Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat SME Employment 2019-2024
 city_surat_sme = city_surat.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Surat SME Employment 2019-2024:\n',city_surat_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_surat_sme)
+plt.title('City Surat SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat Tourism Sector Employment 2019-2024
 city_surat_tourism = city_surat.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Surat Tourism Sector Employment 2019-2024:\n',city_surat_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_surat_tourism)
+plt.title('City Surat Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Surat ICT Sector Employment 2019-2024
 city_surat_ict = city_surat.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Surat ICT Sector Employment 2019-2024:\n',city_surat_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_surat_ict)
+plt.title('City Surat ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Jaipur report 2019 to 2024
 
 city_jaipur = df[df['City']=='Jaipur']
 
+# City Jaipur R&D Expenditure 2019-2024
 city_jaipur_rd = city_jaipur.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Jaipur R&D Expenditure 2019-2024:\n',city_jaipur_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_jaipur_rd)
+plt.title('City Jaipur R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur Patents per 100,000 Inhabitants 2019-2024
 city_jaipur_patents = city_jaipur.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Jaipur Patents per 100,000 Inhabitants 2019-2024:\n',city_jaipur_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_jaipur_patents)
+plt.title('City Jaipur Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur Unemployment Rate 2019-2024
 city_jaipur_unemployment_rate = city_jaipur.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Jaipur Unemployment Rate 2019-2024:\n',city_jaipur_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_jaipur_unemployment_rate)
+plt.title('City Jaipur Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur Youth employment Rate 2019-2024
 city_jaipur_youth_unemployment = city_jaipur.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Jaipur Youth employment Rate 2019-2024:\n',city_jaipur_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_jaipur_youth_unemployment)
+plt.title('City Jaipur Youth employment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur SME Employment 2019-2024
 city_jaipur_sme = city_jaipur.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Jaipur SME Employment 2019-2024:\n',city_jaipur_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_jaipur_sme)
+plt.title('City Jaipur SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur Tourism Employment 2019-2024
 city_jaipur_tourism = city_jaipur.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Jaipur Tourism Employment 2019-2024:\n',city_jaipur_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_jaipur_tourism)
+plt.title('City Jaipur Tourism Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Jaipur ICT Sector Employment 2019-2024
 city_jaipur_ict = city_jaipur.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Jaipur ICT Sector Employment 2019-2024:\n',city_jaipur_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_jaipur_ict)
+plt.title('City Jaipur ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Lucknow report 2019 to 2024
 
 city_lucknow = df[df['City']=='Lucknow']
 
+# City Lucknow R&D Expenditure 2019-2024
 city_lucknow_rd = city_lucknow.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City LUcknow R&D expenditure 2019-2024:\n',city_lucknow_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_lucknow_rd)
+plt.title('City Lucknow R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow Patents per 100,000 inhabitants 2019-2024
 city_lucknow_patents = city_lucknow.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Lucknow Patents per 100,000 inhabitants 2019-2024:\n',city_lucknow_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_lucknow_patents)
+plt.title('City Lucknow Patents per 100,000 inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow Unemployment Rate 2019-2024
 city_lucknow_unemployment_rate = city_lucknow.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Lucknow Unemployment Rate 2019-2024:\n',city_lucknow_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_lucknow_unemployment_rate)
+plt.title('City Lucknow Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow Youth Unemployment Rate 2019-2024
 city_lucknow_youth_unemployment = city_lucknow.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Lucknow Youth Unemployment Rate 2019-2024:\n',city_lucknow_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_lucknow_youth_unemployment)
+plt.title('City Lucknow Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow SME Employment 2019-2024
 city_lucknow_sme = city_lucknow.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Lucknow SME employment 2019-2024:\n',city_lucknow_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_lucknow_sme)
+plt.title('City Lucknow SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow Tourism Sector Employment 2019-2024
 city_lucknow_tourism = city_lucknow.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Lucknow Tourism Sector Employment 2019-2024:\n',city_lucknow_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_lucknow_tourism)
+plt.title('City Lucknow Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Lucknow ICT Sector Employment 2019-2024
 city_lucknow_ict = city_lucknow.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Lucknow ICT Sector Employment 2019-2024:\n',city_lucknow_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_lucknow_ict)
+plt.title('City Lucknow ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Kanpur report 2019 to 2024
 
 city_kanpur = df[df['City']=='Kanpur']
 
+# City Kanpur R&D Expenditure (% of GDP) 2019-2024
 city_kanpur_rd = city_kanpur.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Kanpur R&d Expenditure (% of GDP):\n',city_kanpur_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_kanpur_rd)
+plt.title('City Kanpur R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CIty Kanpur Patents per 100,000 Inhabitants 2019-2024
 city_kanpur_patents = city_kanpur.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Kanpur Patents per 100,000 inhabitants:\n',city_kanpur_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_kanpur_patents)
+plt.title('CIty Kanpur Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kanpur Unemployment Rate 2019-2024
 city_kanpur_unemployment_rate = city_kanpur.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
-city_kanpur_youth_unemployment = city_kanpur.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Kanpur Unemployment Rate 2019-2024:\n',city_kanpur_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_kanpur_unemployment_rate)
+plt.title('City Kanpur Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kanpur Youth Unemployment rate 2019-2024
+city_kanpur_youth_unemployment = city_kanpur.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index() 
+print('City Kanpur Youth Unemployment Rate 2019-2024:\n',city_kanpur_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_kanpur_youth_unemployment)
+plt.title('City Kanpur Youth Unemployment rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kanpur SME Employment 2019-2024
 city_kanpur_sme = city_kanpur.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Kanpur SME Employment 2019-2024:\n',city_kanpur_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_kanpur_sme)
+plt.title('City Kanpur SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kanpur Tourism Sector Employment 2019-2024
 city_kanpur_tourism = city_kanpur.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Kanpur Tourism Sector Employment 2019-2024:\n',city_kanpur_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_kanpur_tourism)
+plt.title('City Kanpur Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Kanpur ICT Sector Employment 2019-2024
 city_kanpur_ict = city_kanpur.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Kanpur ICT sector employment 2019-2024:\n',city_kanpur_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_kanpur_ict)
+plt.title('City Kanpur ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 
 # City Nagpur report 2019 to 2024
 
 city_nagpur = df[df['City']=='Nagpur']
 
+# City Nagpur R&D Expenditure (% of GDP) 2019-2024
 city_nagpur_rd = city_nagpur.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Nagpur R&D Expenditure (% of GDP) 2019-2024:\n',city_nagpur_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_nagpur_rd)
+plt.title('City Nagpur R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur Patents per 100,000 inhabitants 2019-2024
 city_nagpur_patents = city_nagpur.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Nagpur Patents per 100,000 inhabitants 2019-2024:\n',city_nagpur_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_nagpur_patents)
+plt.title('City Nagpur Patents per 100,000 inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur Unemployment Rate 2019-2024
 city_nagpur_unemployment_rate = city_nagpur.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Nagpur Unemployment Rate 2019-2024:\n',city_nagpur_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_nagpur_unemployment_rate)
+plt.title('City Nagpur Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur Youth unemployment Rate 2019-2024
 city_nagpur_youth_unemployment = city_nagpur.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Nagpur Youth Unemployment Rate 2019-2024:\n',city_nagpur_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_nagpur_youth_unemployment)
+plt.title('City Nagpur Youth unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur SME employment 2019-2024
 city_nagpur_sme = city_nagpur.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Nagpur SMe employment 2019-2024:\n',city_nagpur_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_nagpur_sme)
+plt.title('City Nagpur SME employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur Tourism Sector Employment 2019-2024
 city_nagpur_tourism = city_nagpur.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Nagpur Tourism Sector Employment 2019-2024:\n',city_nagpur_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_nagpur_tourism)
+plt.title('City Nagpur Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nagpur ICT Sector Employment 2019-2024
 city_nagpur_ict = city_nagpur.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Nagpur ICT Sector Employment 2019-2024:\n',city_nagpur_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_nagpur_ict)
+plt.title('City Nagpur ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 #City Indore report 2019 to 2024
 
 city_indore = df[df['City']=='Indore']
 
+
+# City Indore R&D Expenditure (% of GDP) 2019-2024
 city_indore_rd = city_indore.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Indore R&D Expenditure (% of GDP) 2019-2024:\n',city_indore_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_indore_rd)
+plt.title('City Indore R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Indore Patents per 100,000 Inhabitants 2019-2024
 city_indore_patents = city_indore.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Indhore Patents per 100,000 Inhabitants:\n',city_indore_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_indore_patents)
+plt.title('City Indore Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Indore Unemployment Rate 2019-2024
 city_indore_unemployment_rate = city_indore.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Indore Unemployment Rate 2019-2024:\n',city_indore_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_indore_unemployment_rate)
+plt.title('City Indore Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Indore Youth Unemployment Rate 2019-2024
 city_indore_youth_unemployment = city_indore.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Indore Youth Unemployment Rate 2019-2024:\n',city_indore_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_indore_youth_unemployment)
+plt.title('City Indore Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Indore SME Employment 2019-2024
 city_indore_sme = city_indore.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Indore SME Employment 2019-2024:\n',city_indore_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_indore_sme)
+plt.title('City Indore SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CIty Indore Tourism Sector Employment 2019-2020
 city_indore_tourism = city_indore.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Indore Tourism Sector Employment 2019-2024:\n',city_indore_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_indore_tourism)
+plt.title('CIty Indore Tourism Sector Employment 2019-2020')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Indore ICT Sector Employment 2019-2024
 city_indore_ict = city_indore.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Indore ICT Sector Employment 2019-2024:\n',city_indore_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_indore_ict)
+plt.title('City Indore ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Bhopal report 2019 to 2024
 
 city_bhopal = df[df['City']=='Bhopal']
 
+# City Bhopal R&D Expenditure 2019-2024
 city_bhopal_rd = city_bhopal.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Bhopal R&D Expenditure 2019-2024:\n',city_bhopal_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_bhopal_rd)
+plt.title('City Bhopal R&D Expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bhopal Patents per 100,000 Inhabitants 2019-2024
 city_bhopal_patents = city_bhopal.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Bhopal Patents per 100,000 Inhabitants 2019-2024:\n',city_bhopal_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='brown',marker='o',data=city_bhopal_patents)
+plt.title('City Bhopal Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bhopal Unemployment Rate 2019-2024
 city_bhopal_unemployment_rate = city_bhopal.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Bhopal Unemployment Rate 2019-2024:\n',city_bhopal_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_bhopal_unemployment_rate)
+plt.title('City Bhopal Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bhopal Youth Unemployment Rate 2019-2024
 city_bhopal_youth_unemployment = city_bhopal.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
-city_bhopal_sme = city_bhopal.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Bhopal Youth Unemployment Rate 2019-2024:\n',city_bhopal_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_bhopal_youth_unemployment)
+plt.title('City Bhopal Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bhopal SME Employment 2019-2024
 city_bhopal_tourism = city_bhopal.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Bhopal SME employment 2019-2024:\n',city_bhopal_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_bhopal_tourism)
+plt.title('City Bhopal SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Bhopal ICT Sector Employment 2019-2024
 city_bhopal_ict = city_bhopal.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Bhopal ICT Sector Employment 2019-2024:\n',city_bhopal_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_bhopal_ict)
+plt.title('City Bhopal ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 #City Patna report 2019 to 2024
 
 city_patna = df[df['City']=='Patna']
 
+# City Patna R&D Expenditure (% of GDP), 2019-2024
 city_patna_rd = city_patna.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Patna R&D Expenditure (% of GDP) 2019-2024:\n',city_patna_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_patna_rd)
+plt.title('City Patna R&D Expenditure (% of GDP), 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Patna Patents Per 100,000 Inhabitants 2019-2024
 city_patna_patents = city_patna.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Patna Patents per 100,000 Inhabitants 2019-2024:\n',city_patna_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_patna_patents)
+plt.title('City Patna Patents Per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Patna Unemployment Rate 2019-2024
 city_patna_unemployment_rate = city_patna.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Patna Unemployment Rate 2019-2024:\n',city_patna_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_patna_unemployment_rate)
+plt.title('City Patna Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CIty Patna Youth Unemployment Rate 2019-2024
 city_patna_youth_unemployment = city_patna.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Patna Youth Unemployment Rate 2019-2024:\n',city_patna_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_patna_youth_unemployment)
+plt.title('CIty Patna Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Patna SME Employment 2019-2024
 city_patna_sme = city_patna.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Patna SME Employment 2019-2024:\n',city_patna_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_patna_sme)
+plt.title('City Patna SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Patna Tourism Sector Employment 2019-2024
 city_patna_tourism = city_patna.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Patna Tourism Sector Employment 2019-2024:\n',city_patna_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_patna_tourism)
+plt.title('City Patna Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Patna ICT Sector Employment 2019-2024
 city_patna_ict = city_patna.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Patna ICT sector EMployment 2019-2024:\n',city_patna_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_patna_ict)
+plt.title('City Patna ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Vadodara report 2019 to 2024
 
 city_vadodara = df[df['City']=='Vadodara']
 
+# City Vadodara R&D Expenditure (% of GDP) 2019-2024
 city_vadodara_rd = city_vadodara.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Vadodara R&D Expenditure (% of GDP) 2019-2024:\n',city_vadodara_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_vadodara_rd)
+plt.title('City Vadodara R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara Patents Per 100,000 Inhabitants 2019-2024
 city_vadodara_patents = city_vadodara.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Vadodara Patents per 100,000 Inhabitants 2019-2024:\n',city_vadodara_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_vadodara_patents)
+plt.title('City Vadodara Patents Per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara Unemployment rate 2019-2024
 city_vadodara_unemployment_rate = city_vadodara.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Vadodara Unemployment Rate 2019-2024:\n',city_vadodara_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_vadodara_unemployment_rate)
+plt.title('City Vadodara Unemployment rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara Youth Unemployment Rate 2019-2024
 city_vadodara_youth_unemployment = city_vadodara.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Vadodara Youth Unemployment Rate 2019-2024:\n',city_vadodara_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_vadodara_youth_unemployment)
+plt.title('City Vadodara Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara SME Employment 2019-2024
 city_vadodara_sme = city_vadodara.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Vadodara SME Employment 2019-2024:\n',city_vadodara_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_vadodara_sme)
+plt.title('City Vadodara SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara Tourism Sector Employment 2019-2024
 city_vadodara_tourism = city_vadodara.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Vadodara Tourism Sector Employment 2019-2024:\n',city_vadodara_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_vadodara_tourism)
+plt.title('City Vadodara Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Vadodara ITC Sector Employment 2019-2024
 city_vadodara_ict = city_vadodara.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Vadodara ITC Sector Employment 2019-2024:\n',city_vadodara_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_vadodara_ict)
+plt.title('City Vadodara ITC Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Ludhiana report 2019 to 2024
 
 city_ludhiana = df[df['City']=='Ludhiana']
 
+# City Ludhina R&D Expenditure (% of GDP) 2019-2024
 city_ludhiana_rd = city_ludhiana.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Ludhina R&D Expenditure (% of GDP):\n',city_ludhiana_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_ludhiana_rd)
+plt.title('City Ludhina R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CIty Ludhiana Patents per 100,000 Inhabitants 2019-2024
 city_ludhiana_patents = city_ludhiana.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Ludhian Patents Per 100,000 inhabitants 2019-2024:\n', city_ludhiana_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_ludhiana_patents)
+plt.title('CIty Ludhiana Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ludhiana Unemployment Rate 2019-2024
 city_ludhiana_unemployment_rate = city_ludhiana.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Ludhiana Unemployment Rate 2019-2024:\n',city_ludhiana_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_ludhiana_unemployment_rate)
+plt.title('City Ludhiana Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ludhiana Youth Unemployment Rate 2019-2024
 city_ludhiana_youth_unemployment = city_ludhiana.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Ludhiana Youth Unemployment Rate 2019-2024:\n',city_ludhiana_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_ludhiana_youth_unemployment)
+plt.title('City Ludhiana Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ludhiana SME Employment 2019-2024
 city_ludhiana_sme = city_ludhiana.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Ludhiana SME Employment 2019-2024:\n',city_ludhiana_sme)
+
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_ludhiana_sme)
+plt.title('City Ludhiana SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+# City Ludhiana Tourism Sector Employment 2019-2024
 city_ludhiana_tourism = city_ludhiana.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Ludhiana Tourism Sector Employment 2019-2024:\n',city_ludhiana_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_ludhiana_tourism)
+plt.title('City Ludhiana Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ludhiana ICT Sector Employment 2019-2024
 city_ludhiana_ict = city_ludhiana.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Ludhiana ICT Sector Employment 2019-2024:\n',city_ludhiana_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_ludhiana_ict)
+plt.title('City Ludhiana ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 
 # City Agra report 2019 to 2024
 
+
 city_agra = df[df['City']=='Agra']
 
+# City Agra R&D Expenditure (% of GDP) 2019-2024
 city_agra_rd = city_agra.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Agra R&D Expenditure (% of GDP) 2019-2024:\n',city_agra_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_agra_rd)
+plt.title('City Agra R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra Patents per 100,000 Inhabitants 2019-2024
 city_agra_patents = city_agra.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Agra Patents per 100,000 Inhabitants 2019-2024:\n',city_agra_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_agra_patents)
+plt.title('City Agra Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra Unemployment per 100,000 Inhabitants 2019-2024
 city_agra_unemployment_rate = city_agra.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Agra Unemployment Per 100,000 Inhabitants 2019-2024:\n',city_agra_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_agra_unemployment_rate)
+plt.title('City Agra Unemployment per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra Youth Unemployment rate 2019-2024
 city_agra_youth_unemployment = city_agra.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Agra Youth Unemployment Rate 2019-2024:\n',city_agra_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_agra_youth_unemployment)
+plt.title('City Agra Youth Unemployment rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra SME Employment (%) 2019-2024
 city_agra_sme = city_agra.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Agra SME Employment (%) 2019-2024:\n',city_agra_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_agra_sme)
+plt.title('City Agra SME Employment (%) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra Tourism Sector Employment (%) 2019-2024
 city_agra_tourism = city_agra.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Agra Tourism Sector Employment 2019-2024:\n',city_agra_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_agra_tourism)
+plt.title('City Agra Tourism Sector Employment (%) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Agra ICT Sector Employment 2019-2024
 city_agra_ict = city_agra.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Agra ICT Sector Employment 2019-2024:\n',city_agra_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_agra_ict)
+plt.title('City Agra ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Nashik report 2019 to 2024
 
 city_nashik = df[df['City']=='Nashik']
 
+# City Nashik R&D Expenditure (% of GDP) 2019-2024
 city_nashik_rd = city_nashik.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Nashik R&D Expenditure (% of GDP):\n',city_nashik_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_nashik)
+plt.title('City Nashik R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik Patents per 100,000 Inhabitants 2019-2024
 city_nashik_patents = city_nashik.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Nashik Patents Per 100,000 Inhabitants 2019-2024:\n',city_nashik_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_nashik_patents)
+plt.title('City Nashik Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik Unemployment Rate 2019-2024
 city_nashik_unemployment_rate = city_nashik.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Nashik Unemployment Rate 2019-2024:\n',city_nashik_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_nashik_unemployment_rate)
+plt.title('City Nashik Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik Youth Unemployment Rate 2019-2024
 city_nashik_youth_unemployment = city_nashik.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Nashik Youth Unemployment Rate 2019-2024:\n',city_nashik_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_nashik_youth_unemployment)
+plt.title('City Nashik Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik SME Employment (%) 2019-2024
 city_nashik_sme = city_nashik.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Nashik SME Employment (%) 2019-2024:\n',city_nashik_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_nashik_sme)
+plt.title('City Nashik SME Employment (%) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik Tourism Sector Employment 2019-2024
 city_nashik_tourism = city_nashik.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Nashik Tourism Sector Employment 2019-2024:\n',city_nashik_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_nashik_tourism)
+plt.title('City Nashik Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Nashik ICT Sector Employment 2019-2024
 city_nashik_ict = city_nashik.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Nashik ICT Sector Employment 2019-2024:\n',city_nashik_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_nashik_ict)
+plt.title('City Nashik ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Faridabad report 2019 to 2024
 
 city_faridabad = df[df['City']=='Faridabad']
 
+# City Faridabad R&D Expenditure (% of GDP) 2019-2024
 city_faridabad_rd = city_faridabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Faridabad R&D Expenditure (% of GDP):\n',city_faridabad_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_faridabad_rd)
+plt.title('City Faridabad R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad R&D Expenditure (% of GDP) 2019-2024
 city_faridabad_patents = city_faridabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Faridabad R&D Expenditure (% of GDP) 2019-2024:\n',city_faridabad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_faridabad_patents)
+plt.title('City Faridabad R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad unemployment Rate 2019-2024
 city_faridabad_unemployment_rate = city_faridabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Faridabad Unemployment Rate 2019-2024:\n',city_faridabad_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_faridabad_unemployment_rate)
+plt.title('City Faridabad unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad Youth Unemployment Rate 2019-2024
 city_faridabad_youth_unemployment = city_faridabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Faridabad Youth Unemployment Rate 2019-2024:\n',city_faridabad_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_faridabad_youth_unemployment)
+plt.title('City Faridabad Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad SME Employment 2019-2024
 city_faridabad_sme = city_faridabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Faridabad SME Employment 2019-2024:\n',city_faridabad_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_faridabad_sme)
+plt.title('City Faridabad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad Tourism Sector Employment 2019-2024
 city_faridabad_tourism = city_faridabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Faridabad Tourism Sector Employment 2019-2024:\n',city_faridabad_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_faridabad_tourism)
+plt.title('City Faridabad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Faridabad Tourism ICT Employment 2019-2024
 city_faridabad_ict = city_faridabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Faridabad ICT Sector Employment 2019-2024:\n',city_faridabad_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_faridabad_ict)
+plt.title('City Faridabad Tourism ICT Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Meerut report 2019 to 2024
 
 city_meerut = df[df['City']=='Meerut']
 
+# City Meerut R&D Expenditure (% of GDP) 2019-2024
 city_meerut_rd = city_meerut.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Meerut R&D Expenditure (% of GDP):\n',city_meerut_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_meerut_rd)
+plt.title('City Meerut R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut Patents per 100,000 Inhabitants 2019-2024
 city_meerut_patents = city_meerut.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Meerut Patents per 100,000 Inhabitants 2019-2024:\n',city_meerut_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_meerut_patents)
+plt.title('City Meerut Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut Unemployment Rate 2019-2024
 city_meerut_unemployment_rate = city_meerut.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Meerut Unemployment rate 2019-2024:\n',city_meerut_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_meerut_unemployment_rate)
+plt.title('City Meerut Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut Youth Unemployment Rate 2019-2024 
 city_meerut_youth_unemployment = city_meerut.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Merrut Youth Unemployment Rate 2019-2024:\n',city_meerut_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_meerut_youth_unemployment)
+plt.title('City Meerut Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut SME Employment 2019-2024
 city_meerut_sme = city_meerut.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Meerut SME Employment 2019-2024:\n',city_meerut_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_meerut_sme)
+plt.title('City Meerut SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut Tourism Sector Employment 2019-2024
 city_meerut_tourism = city_meerut.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Meerut Tourism Sector Employment:\n',city_meerut_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_meerut_tourism)
+plt.title('City Meerut Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Meerut ICT Sector Employment 2019-2024
 city_meerut_ict = city_meerut.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Meerut ICT Sector Employment 2019-2024:\n',city_meerut_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_meerut_ict)
+plt.title('City Meerut ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Rajkot report 2019 to 2024
 
 city_rajkot = df[df['City']=='Rajkot']
 
+# CIty Rajkot R&D Expenditure (% of GDP) 2019-2024
 city_rajkot_rd = city_rajkot.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Rajkot R&D Expenditure (% of GDP)2019-2024:\n', city_rajkot_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_rajkot_rd)
+plt.title('CIty Rajkot R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Rajkot Patents Per 100,000 Inhabitants 2019-2024
 city_rajkot_patents = city_rajkot.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Rajkot Patents per 100,000 Inhabitants 2019-2024:\n',city_rajkot_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_rajkot_patents)
+plt.title('City Rajkot Patents Per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CITy Rajkot Unemployment Rate 2019-2024 
 city_rajkot_unemployment_rate = city_rajkot.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Rajkot Unemployment Rate 2019-2024:\n',city_rajkot_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_rajkot_unemployment_rate)
+plt.title('CITy Rajkot Unemployment Rate 2019-2024 ')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Rajkot Youth Unemployment Rate 2019-2024
 city_rajkot_youth_unemployment = city_rajkot.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Rajkot Youth Unemployment Rate 2019-2024:\n',city_rajkot_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_rajkot_youth_unemployment)
+plt.title('City Rajkot Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Rajkot SME Employment 2019-2024 
 city_rajkot_sme = city_rajkot.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Rajkot SME Employment 2019-2024:\n',city_rajkot_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_rajkot_sme)
+plt.title('City Rajkot SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Rajkot Tourism Sector Employment 2019-2024
 city_rajkot_tourism = city_rajkot.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('CIty Rajkot Tourism Sector Employment 2019-2024:\n',city_rajkot_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_rajkot_tourism)
+plt.title('City Rajkot Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# CIty Rajkot ICT Sector Employment 2019-2024
 city_rajkot_ict = city_rajkot.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Rajkot ICT Sector Employment 2019-2024:\n',city_rajkot_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_rajkot_ict)
+plt.title('CIty Rajkot ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Varanasi report 2019 to 2024
 
 city_varanasi = df[df['City']=='Varanasi']
 
+# City Varanasi R&D expenditure 2019-2024
 city_varanasi_rd = city_varanasi.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Varanasi R&D Expenditure 2019-2024:\n',city_varanasi_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_varanasi_rd)
+plt.title('City Varanasi R&D expenditure 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi Patents per 100,000 Inhabitants 2019-2024
 city_varanasi_patents = city_varanasi.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Varanasi Patents per 100,000 Inhabitatnts 2019-2024:\n',city_varanasi_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_varanasi_patents)
+plt.title('City Varanasi Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi Unemployment Rate 2019-2024
 city_varanasi_unemployment_rate = city_varanasi.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Varanasi Unemployment Rate 2019-2024:\n',city_varanasi_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_varanasi_unemployment_rate)
+plt.title('City Varanasi Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi Unemployment Rate 2019-2024
 city_varanasi_youth_unemployment = city_varanasi.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Varanasi Unemployment Rate 2019-2024:\n',city_varanasi_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_varanasi_youth_unemployment)
+plt.title('City Varanasi Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi SME Employment 2019-2024
 city_varanasi_sme = city_varanasi.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Varanasi SME EMployment 2019-2024:\n',city_varanasi_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_varanasi_sme)
+plt.title('City Varanasi SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi Tourism Sector Employment 2019-2024
 city_varanasi_tourism = city_varanasi.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Varanasi Tourism Sector Employment 2019-2024:\n',city_varanasi_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_varanasi_tourism)
+plt.title('City Varanasi Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Varanasi Tourism Sector Employment 2019-2024
 city_varanasi_ict = city_varanasi.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Varanasi ICT Sector Unemployment 2019-2024:\n',city_varanasi_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_varanasi_ict)
+plt.title('City Varanasi Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Srinagar report 2019 to 2024
 
 city_srinagar = df[df['City']=='Srinagar']
 
+# City Srinagar R&D Expenditure (% of GDP) 2019-2024
 city_srinagar_rd = city_srinagar.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Srinagar R&D Expenditure (% of GDP):\n', city_srinagar_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_srinagar_rd)
+plt.title('City Srinagar R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar Patents per 100,000 Inhabitants 2019-2024
 city_srinagar_patents = city_srinagar.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Srinagar Patents per 100,000 Inhabitants 2019-2024:\n',city_srinagar_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_srinagar_patents)
+plt.title('City Srinagar Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar Unemployment Rate 2019-2024
 city_srinagar_unemployment_rate = city_srinagar.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Srinagar Unemployment Rate 2019-2024:\n',city_srinagar_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_srinagar_unemployment_rate)
+plt.title('City Srinagar Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar Youth Unemployment Rate 2019-2024
 city_srinagar_youth_unemployment = city_srinagar.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Srinagar Youth Unemployment Rate 2019-2024:\n',city_srinagar_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_srinagar_youth_unemployment)
+plt.title('City Srinagar Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar SME Employment 2019-2024
 city_srinagar_sme = city_srinagar.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Srinagar SME Employment 2019-2024:\n',city_srinagar_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_srinagar_sme)
+plt.title('City Srinagar SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar Tourism Sector Employment 2019-2024
 city_srinagar_tourism = city_srinagar.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Srinagar Tourism Sector Employment 2019-2024:\n',city_srinagar_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_srinagar_tourism)
+plt.title('City Srinagar Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Srinagar ICT Sector Employment 2019-2024
 city_srinagar_ict = city_srinagar.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Srinagar ICT Sector Employment 2019-2024:\n',city_srinagar_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_srinagar_ict)
+plt.title('City Srinagar ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Aurangabad report 2019 to 2024
 
 city_aurangabad = df[df['City']=='Aurangabad']
 
+# City Aurangabad R&D Expenditure (% of GDP) 2019-2024
 city_aurangabad_rd = city_aurangabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Aurangabad R&D (% of GDP) 2019-2024:\n',city_aurangabad_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_aurangabad_rd)
+plt.title('City Aurangabad R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City AUrangabad Patents per 100,000 Inhabitants 2019-2024
 city_aurangabad_patents = city_aurangabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Aurangabad Patents Per 100,000 Inhabitants 2019-2024:\n',city_aurangabad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_aurangabad_patents)
+plt.title('City AUrangabad Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Aurangabad Unemployment Rate 2019-2024
 city_aurangabad_unemployment_rate = city_aurangabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Aurangabad Unemployment Rate 2019-2024:\n',city_aurangabad_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_aurangabad_unemployment_rate)
+plt.title('City Aurangabad Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City AUrangabad Youth Unemployment Rate 2019-2024
 city_aurangabad_youth_unemployment = city_aurangabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Aurangabad Youth Unemployment Rate 2019-2024:\n',city_aurangabad_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_aurangabad_youth_unemployment)
+plt.title('City AUrangabad Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Aurangabad SME Employment 2019-2024
 city_aurangabad_sme = city_aurangabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Aurangabad SME Employment 2019-2024:\n',city_aurangabad_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='green',marker='o',data=city_aurangabad_sme)
+plt.title('City Aurangabad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Aurangabad Tourism Sector Employment 2019-2024
 city_aurangabad_tourism = city_aurangabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Aurangabad Tourism Sector Employment 2019-2024:\n',city_aurangabad_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='blue',marker='o',data=city_aurangabad_tourism)
+plt.title('City Aurangabad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Aurangabad Tourism Sector Employment 2019-2024
 city_aurangabad_ict = city_aurangabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Aurangabad Tourism Sector Employment 2019-2024:\n',city_aurangabad_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='black',marker='o',data=city_aurangabad_ict)
+plt.title('City Aurangabad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 
 # City Dhanbad report 2019 to 2024
 
 city_dhanbad = df[df['City']=='Dhanbad']
 
+# City Dhanbad R&D Expenditure (% of GDP) 2019-2024
 city_dhanbad_rd = city_dhanbad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Dhanbad R&D Expenditure (% of GDP) 2019-2024:\n',city_dhanbad_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='orange',marker='o',data=city_dhanbad_rd)
+plt.title('City Dhanbad R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad Patents per 100,000 Inhabitants 2019-2024
 city_dhanbad_patents = city_dhanbad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Dhanbad Patents per 100,000 Inhabitants 2019-2024:\n',city_dhanbad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='purple',marker='o',data=city_dhanbad_patents)
+plt.title('City Dhanbad Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad Unemployment Rate 2019-2024
 city_dhanbad_unemployment_rate = city_dhanbad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Dhanbad Unemployment Rate 2019-2024:\n',city_dhanbad_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='brown',marker='o',data=city_dhanbad_unemployment_rate)
+plt.title('City Dhanbad Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad Youth Unemployment Rate 2019-2024
 city_dhanbad_youth_unemployment = city_dhanbad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Dhanbad Youth Unemployment Rate 2019-2024:\n',city_dhanbad_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='red',marker='o',data=city_dhanbad_youth_unemployment)
+plt.title('City Dhanbad Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad SME Employment 2019-2024
 city_dhanbad_sme = city_dhanbad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Dhanbad SME Employmet 2019-2024:\n',city_dhanbad_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_dhanbad_sme)
+plt.title('City Dhanbad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad Tourism Sector Employment 2019-2024
 city_dhanbad_tourism = city_dhanbad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Dhanbad Tourism Sector Employment 2019-2024:\n',city_dhanbad_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='black',marker='o',data=city_dhanbad_tourism)
+plt.title('City Dhanbad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Dhanbad ICT Sector Employment 2019-2024
 city_dhanbad_ict = city_dhanbad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Dhanbad ICT Sector Employment 2019-2024:\n',city_dhanbad_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='orange',marker='o',data=city_dhanbad_ict)
+plt.title('City Dhanbad ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
 
 # City Amritsar report 2019 to 2024
 
+
 city_amritsar = df[df['City']=='Amritsar']
 
+# City Amritsar R&D Expenditure (% of GDP) 2019-2024
 city_amritsar_rd = city_amritsar.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Amritsar R&D Expenditure (% of GDP) 2019-2024:\n',city_amritsar_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='purple',marker='o',data=city_amritsar_rd)
+plt.title('City Amritsar R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar Patents per 100,000 Inhabitants 2019-2024
 city_amritsar_patents = city_amritsar.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Amritsar Patents Per 100,000 Inhabitants 2019-2024:\n',city_amritsar_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='brown',marker='o',data=city_amritsar_patents)
+plt.title('City Amritsar Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar Patents per 100,000 Inhabitants 2019-2024
 city_amritsar_unemployment_rate = city_amritsar.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Amritsar Patents per 100,000 Inhabitants 2019-2024:\n',city_amritsar_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_amritsar_unemployment_rate)
+plt.title('City Amritsar Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar Youth Unemployment Rate (%) 2019-2024
 city_amritsar_youth_unemployment = city_amritsar.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Amritsar Youth Unemployment Rate 2019-2024:\n',city_amritsar_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_amritsar_youth_unemployment)
+plt.title('City Amritsar Youth Unemployment Rate (%) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar SME Employment 2019-2024
 city_amritsar_sme = city_amritsar.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Amritsar SME Employment 2019-2024:\n',city_amritsar_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_amritsar_sme)
+plt.title('City Amritsar SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar Tourism Sector Employment 2019-2024
 city_amritsar_tourism = city_amritsar.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Amritsar Tourism Sector Employment 2019-2024:\n',city_amritsar_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='black',marker='o',data=city_amritsar_tourism)
+plt.title('City Amritsar Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Amritsar ICt Sector Employment 2019-2024
 city_amritsar_ict = city_amritsar.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Amritsar ICT Sector Employment 2019-2024:\n',city_amritsar_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='orange',marker='o',data=city_amritsar_ict)
+plt.title('City Amritsar ICt Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Allahabad report 2019 to 2024
 
 city_allahabad = df[df['City']=='Allahabad']
 
+# City Allahabad R&D Expenditure (% of GDP) 2019-2024
 city_allahabad_rd = city_allahabad.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Allahabad R&D Expenditure (% of GDP) 2019-2024:\n',city_agra_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='purple',marker='o',data=city_allahabad_rd)
+plt.title('City Allahabad R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Allahabad Patents per 100,000 Inhabitants 2019-2024
 city_allahabad_patents = city_allahabad.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Allahabad Patents per 100,000 Inhabitants 2019-2024:\n',city_allahabad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='brown',marker='o',data=city_allahabad_patents)
+plt.title('City Allahabad Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+#  City Allahabad Unemployment Rate 2019-2024
 city_allahabad_unemployment_rate = city_allahabad.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Allahabad Unemployment Rate 2019-2024:\n',city_allahabad_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_allahabad_unemployment_rate)
+plt.title('City Allahabad Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Allahabad Youth Unemployment Rate 2019-2024
 city_allahabad_youth_unemployment = city_allahabad.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Allahabad Youth Unemployment Rate 2019-2024:\n',city_allahabad_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_allahabad_youth_unemployment)
+plt.title('City Allahabad Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Allahabad SME Employment 2019-2024
 city_allahabad_sme = city_allahabad.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City Allahabad SME Employment 2019-2024:\n',city_allahabad_sme)
+
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_allahabad_sme)
+plt.title('City Allahabad SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Allahabad Tourism Sector Employment 2019-2024
 city_allahabad_tourism = city_allahabad.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Allahabad Tourism Sector Employment 2019-2024:\n',city_allahabad_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='black',marker='o',data=city_allahabad_tourism)
+plt.title('City Allahabad Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Allahabad ICT Sector Employment 2019-2024
 city_allahabad_ict = city_allahabad.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City Allahabad ICT Sector Employment 2019-2024:\n',city_allahabad_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='orange',marker='o',data=city_allahabad_ict)
+plt.title('City Allahabad ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
 
 # City Ranchi Report 2019 to 2024
 
 city_ranchi = df[df['City']=='Ranchi']
 
+# City Ranchi R&D Expenditure (% of GDP) 2019-2024
 city_ranchi_rd = city_ranchi.groupby('Year')['R&D Expenditure (% of GDP)'].sum().reset_index()
+print('City Ranchi R&D Expenditure (% of GDP) 2019-2024:\n',city_ranchi_rd)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='R&D Expenditure (% of GDP)',color='purple',marker='o',data=city_ranchi_rd)
+plt.title('City Ranchi R&D Expenditure (% of GDP) 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('R&D Expenditure (% of GDP)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi Patents per 100,000 Inhabitants 2019-2024
 city_ranchi_patents = city_ranchi.groupby('Year')['Patents per 100,000 Inhabitants'].sum().reset_index()
+print('City Ranchi Patents per 100,000 Inhabitants 2019-2024:\n',city_ranchi_patents)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Patents per 100,000 Inhabitants',color='brown',marker='o',data=city_ranchi_patents)
+plt.title('City Ranchi Patents per 100,000 Inhabitants 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Patents per 100,000 Inhabitants')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi Unemployment Rate 2019-2024
 city_ranchi_unemployment_rate = city_ranchi.groupby('Year')['Unemployment Rate (%)'].sum().reset_index()
+print('City Ranchi Unemployment Rate 2019-2024:\n',city_ranchi_unemployment_rate)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Unemployment Rate (%)',color='red',marker='o',data=city_ranchi_unemployment_rate)
+plt.title('City Ranchi Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi Youth Unemployment Rate 2019-2024
 city_ranchi_youth_unemployment = city_ranchi.groupby('Year')['Youth Unemployment Rate (%)'].sum().reset_index()
+print('City Ranchi Youth Unemployment Rate 2019-2024:\n',city_ranchi_youth_unemployment)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Youth Unemployment Rate (%)',color='green',marker='o',data=city_ranchi_youth_unemployment)
+plt.title('City Ranchi Youth Unemployment Rate 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Youth Unemployment Rate (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi SME Employment 2019-2024
 city_ranchi_sme = city_ranchi.groupby('Year')['SME Employment (%)'].sum().reset_index()
+print('City SME Employment 2019-2024:\n',city_ranchi_sme)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='SME Employment (%)',color='blue',marker='o',data=city_ranchi_sme)
+plt.title('City Ranchi SME Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('SME Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi Tourism Sector Employment 2019-2024
 city_ranchi_tourism = city_ranchi.groupby('Year')['Tourism Sector Employment (%)'].sum().reset_index()
+print('City Tourism Sector Employment 2019-2024:\n',city_ranchi_tourism)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='Tourism Sector Employment (%)',color='black',marker='o',data=city_ranchi_tourism)
+plt.title('City Ranchi Tourism Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('Tourism Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+# City Ranchi ICT Sector Employment 2019-2024
 city_ranchi_ict = city_ranchi.groupby('Year')['ICT Sector Employment (%)'].sum().reset_index()
+print('City ICT Sector Employment 2019-2024:\n',city_ranchi_ict)
+
+# Plot Line
+
+plt.figure(figsize=(10,6))
+sns.lineplot(x='Year',y='ICT Sector Employment (%)',color='orange',marker='o',data=city_ranchi_ict)
+plt.title('City Ranchi ICT Sector Employment 2019-2024')
+plt.xlabel('Year')
+plt.ylabel('ICT Sector Employment (%)')
+plt.xticks()
+plt.tight_layout()
+plt.show()
+
+
+
+
 
 
 
